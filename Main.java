@@ -7,9 +7,12 @@ public class Main {
 		Nissan nissan = new Nissan();
 		Ferrari ferrari = new Ferrari();
 
-		honda.getPerformance();
-		nissan.getPerformance();
-		ferrari.getPerformance();
+		honda.displayPerformance("ホンダ");
+		nissan.displayPerformance("ニッサン");
+		ferrari.displayPerformance("フェラーリ");
+		
+		ferrari.liftUpDown();
+		ferrari.liftUpDown();
 	}
 
 }

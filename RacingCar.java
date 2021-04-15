@@ -11,10 +11,19 @@ public class RacingCar {
 	public void brake() {
 		
 	}
-	public void getPerformance() {
-		System.out.println("‰¿Ši: " + this.price + "‰~");
-		System.out.println("’èˆõ: " + this.seats + "l");
-		System.out.println("‰Á‘¬“x: " + this.acceleration + "m/s^2");
-		System.out.println(" ");
+	public int getPrice() {
+		return this.price;
+	}
+	public int getSeats() {
+		return this.seats;
+	}
+	public int getAcceleration() {
+		return this.acceleration;
+	}
+	public void displayPerformance(String vehecleMaker) {
+		System.out.println(vehecleMaker);
+		System.out.println("‰¿Ši: " + price + "‰~");
+		System.out.println("’èˆõ”: " + seats + "l");
+		System.out.println("‰Á‘¬“x: " + acceleration + "m/s^2\n");
 	}
 }

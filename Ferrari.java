@@ -25,6 +25,7 @@ public class Ferrari extends RacingCar {
 			vehecleHeight -= 40;
 			System.out.println("ˆ—Œã‚ÌÔ‚: " + vehecleHeight + "mm");
 			System.out.println("Œ»İ‚Ì‰Á‘¬“x: " + getAcceleration() + "m/s^2\n");
+
 		}
 	}
 }

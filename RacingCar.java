@@ -14,7 +14,7 @@ public class RacingCar {
 		this.setSeats(seats_);
 		this.setAcceleration(acceleration_);
 	}
-	
+
 	public void accel() {
 		
 	}
@@ -24,7 +24,7 @@ public class RacingCar {
 	public int getPrice() {
 		return this.price;
 	}
-	
+
 	public void setPrice(int price_) {
 		this.price = price_;
 	}
@@ -60,4 +60,5 @@ public class RacingCar {
 		System.out.println("èÊàıêî: " + crew + "êl");
 		System.out.println("â¡ë¨ìx: " + acceleration + "m/s^2\n");
 	}
+
 }

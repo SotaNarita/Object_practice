@@ -6,7 +6,7 @@ public class Ferrari extends RacingCar {
 	boolean frontUp = false; //現在車高が上がっているかどうかの判定に必要
 	
 	public Ferrari() {
-		super(9000000, "フェラーリ", 2, 4.8, 4, 48.6);
+		super(9000000, "フェラーリ", 2, 5, 2.9, 50.4);
 	}
 
 	//車高上げるまたは下げるメソッド

@@ -1,11 +1,12 @@
 package object;
 
 public class RacingCircuit {
-	private double straightLength1 = 1200;
-	private double straightLength2 = 1300;
-	private double curveLength1 = 1000;
-	private double curveLength2 = 800;
+	private double straightLength1 = 2000;
+	private double straightLength2 = 3500;
+	private double curveLength1 = 1500;
+	private double curveLength2 = 1000;
 	private double time=0;
+	public static double timeUnit = 0.1;
 	double remainingVelocity;
 	double raceTimeArray[][] = new double[4][4];
 	
@@ -66,33 +67,27 @@ public class RacingCircuit {
 			}
 			System.out.println(carArray[i].getCarName() + "は合計で" + String.format("%.4g", fullTime[i]) + "秒");
 		}
-		System.out.println();
-		System.out.println("1位は" + String.format("%.4g", ranking) + "秒で" + rank1Name + "!");
+		System.out.println("\n1位は" + String.format("%.4g", ranking) + "秒で" + rank1Name + "!");
 	}
 
-	public double getTime() {
-		return time;
-	}
-	public void setTime(double time) {
-		this.time = time;
-	}
-	
 	//直線時の運転を示すメソッド
 	private void goStraight(double straightLength, RacingCar car) {
 		//残りの距離
 		remainingVelocity = straightLength;
 		this.setTime(0);
-		for (remainingVelocity = straightLength; remainingVelocity>=0; remainingVelocity -= (0.005*car.getAcceleration()+car.getSpeed()*0.1)) {
-			this.setTime(this.getTime()+0.1);
+		double d = this.traveledVelocity(car);
+		for (remainingVelocity = straightLength; remainingVelocity>=0; remainingVelocity -= d) {
+			d = this.traveledVelocity(car);
+			this.setTime(this.getTime()+timeUnit);
 			if (remainingVelocity !=0 ) {	
 			if (car.getBrakePower() <=3) {//ブレーキ能力の弱い車
-				if (remainingVelocity > straightLength*0.25) {
+				if (remainingVelocity > straightLength*0.1) {
 					car.accel();
 					} else {
 						car.brake();
 					}
 				} else {
-				if(remainingVelocity > straightLength*0.2) {//ブレーキ能力の強い車
+				if(remainingVelocity > straightLength*0.05) {//ブレーキ能力の強い車
 					car.accel();
 				} else {
 					car.brake();
@@ -103,17 +98,39 @@ public class RacingCircuit {
 	}
 	//カーブ時の運転を示すメソッド
 	private void goCurve(double curveLength, RacingCar car) {
-		this.setTime(0);;
-		for (remainingVelocity = curveLength; remainingVelocity>=0; remainingVelocity -= (0.005*car.getAcceleration()+car.getSpeed()*0.1)) {
+		this.setTime(0);
+		double d = this.traveledVelocity(car);
+		for (remainingVelocity = curveLength; remainingVelocity>=0; remainingVelocity -= d) {
+			d = this.traveledVelocity(car);
 			this.setTime(time+0.1);
 			if (remainingVelocity>300) {
 				if (car.getSpeed() < car.getTopSpeed()*0.5) {
 					car.accel();
+					} else {
+						car.brake();
 					}
 			} else {
 				car.accel();
 			}
 		}
 	}
-}
+	
+	public double getTime() {
+		return time;
+	}
+	public void setTime(double time) {
+		this.time = time;
+	}
 
+	//進んだ距離を表すメソッド
+	private double traveledVelocity(RacingCar car) {
+		double unit1;
+		if(car.getSpeed()==car.getTopSpeed()) {
+			unit1 = 0;
+		} else {
+			 unit1 = 0.5*timeUnit*timeUnit*car.getAcceleration();
+		}
+			double traveledVelocity = unit1+car.getSpeed()*timeUnit;
+			return traveledVelocity;
+	}
+}

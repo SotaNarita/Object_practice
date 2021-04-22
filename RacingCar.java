@@ -9,6 +9,7 @@ public class RacingCar {
 	private int seats;
 	private int crew = 0;
 	private double acceleration;
+	private double undoAcceleration;
 	private double brakePower;
 	private double speed = 0;
 	private double topSpeed;
@@ -19,6 +20,7 @@ public class RacingCar {
 		this.setCarName(carName_);
 		this.setSeats(seats_);
 		this.setAcceleration(acceleration_);
+		this.setUndoAcceleration(acceleration_);
 		this.setBrakePower(brakePower_);
 		this.setTopSpeed(topSpeed_);
 	}
@@ -34,7 +36,7 @@ public class RacingCar {
 	//ƒuƒŒ[ƒL‚ð“¥‚ñ‚¾Žž‚Ì“®ì
 	public void brake() {
 		if(speed>0) {
-			speed-=(brakePower*0.1);
+			speed-=(brakePower*RacingCircuit.timeUnit);
 			if(speed<0) {
 				speed=0;
 			}
@@ -76,6 +78,12 @@ public class RacingCar {
 		this.acceleration = acceleration_;
 	}
 	
+	public double getUndoAcceleration() {
+		return undoAcceleration;
+	}
+	public void setUndoAcceleration(double undoAcceleration) {
+		this.undoAcceleration = undoAcceleration;
+	}
 	public double getBrakePower() {
 		return brakePower;
 	}

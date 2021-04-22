@@ -3,6 +3,6 @@ package object;
 public class Honda extends RacingCar{
 	
 	public Honda() {
-		super(6000000, "ホンダ", 7, 4.1, 3, 49.4);
+		super(6000000, "ホンダ", 7, 4.1, 3, 51.3);
 	}
 }
